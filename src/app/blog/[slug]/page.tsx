@@ -9,7 +9,7 @@ import SideBar from "@/components/SideBar";
 export const generateStaticParams = async () => {
     const posts = await fetchBlogs()
 
-    return posts.map((post) => ({
+    return posts.map((post: { fields: { slug: string; } }) => ({
         params: post.fields.slug,
     }))
 }
@@ -54,7 +54,7 @@ export default async function BlogDetail(params : { params: { slug: string } }) 
             [BLOCKS.HEADING_4]: (node, children) => <h4 className="my-5 md:text-lg sm:text-base text-sm">{children}</h4>,
             [BLOCKS.HEADING_5]: (node, children) => <h5 className="my-10 md:text-base sm:text-sm text-xs">{children}</h5>,
             [BLOCKS.HEADING_6]: (node, children) => <h6 className="my-10 mb-20 md:text-base sm:text-sm text-xs">{children}</h6>,
-            [BLOCKS.PARAGRAPH]: (node, children) => <h6 className="my-4 mb-4 md:text-base sm:text-sm text-xs">{children}</h6>,
+            [BLOCKS.PARAGRAPH]: (node, children) => <h6 className="my-10 mb-4 md:text-base sm:text-sm text-xs">{children}</h6>,
         }
     }  
         

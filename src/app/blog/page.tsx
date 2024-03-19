@@ -1,7 +1,8 @@
 'use client'
 
-import { fetchBlogBySlug, fetchBlogs } from "@/lib/blog";
+import { fetchBlogs } from "@/lib/blog";
 import Link from "next/link";
+import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, AwaitedReactNode } from "react";
 
 export default async function Page() {
 
@@ -18,7 +19,7 @@ export default async function Page() {
 
       <div className="flex justify-center gap-8">
         {
-          data.map((item, idx: number) => {
+          data.map((item: { fields: { img: { fields: { file: { url: string | undefined; }; }; }; title: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode> | null | undefined; slug: any; }; }, idx: number) => {
             return <div key={idx} className="card h-[25rem] w-96 bg-base-100 shadow-xl">
             <figure><img src={item.fields.img.fields.file.url} alt="" /></figure>
             <div className="card-body h-full flex flex-col justify-between">
